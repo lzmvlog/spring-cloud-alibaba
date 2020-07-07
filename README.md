@@ -15,7 +15,8 @@ nacos + feign + gateway
 
 #### 使用说明
 
-1.  xxxx
+1.  首先先启动 `nacos-gateway` 
+    注意修改 `application.yml` 中的连接地址 `spring.cloud.nacos.discovery.server-addr='nacos的连接地址'`
 2.  xxxx
 3.  xxxx
 

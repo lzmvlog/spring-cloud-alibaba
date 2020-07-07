@@ -31,6 +31,8 @@ subprojects {
         implementation 'com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:2.1.0.RELEASE'
         implementation 'org.springframework.cloud:spring-cloud-starter-alibaba-sentinel:0.9.0.RELEASE'
         implementation 'org.springframework.cloud:spring-cloud-starter-alibaba-nacos-config:0.9.0.RELEASE'
+        // https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient
+        compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.12'
     }
 
     sourceCompatibility = '1.8'
