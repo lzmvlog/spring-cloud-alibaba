@@ -7,3 +7,6 @@ include(':nacos-provider')
 include(':nacos-consumer-feign')
 include(':nacos-consumer')
 include(':nacos-gateway')
+include 'nacos-file-upload'
+include 'nacos-user'
+
