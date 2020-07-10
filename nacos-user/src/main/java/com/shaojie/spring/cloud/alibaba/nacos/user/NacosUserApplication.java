@@ -1,7 +1,9 @@
 package com.shaojie.spring.cloud.alibaba.nacos.user;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author ShaoJie
@@ -9,9 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Description:
  */
 @SpringBootApplication
+@EnableDiscoveryClient
+@MapperScan("com.shaojie.spring.cloud.alibaba.nacos.user.dao")
 public class NacosUserApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(NacosUserApplication.class);
+        SpringApplication.run(NacosUserApplication.class, args);
     }
 }

@@ -1,0 +1,28 @@
+#server:
+#  port: 8083
+#
+#spring:
+#  application:
+#    name: nacos-user
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/nacos-user?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+#    username: root
+#    password: Root5683@
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 120.78.189.213:8848
+#
+#mybatis-plus:
+#  mapper-locations: classpath:/mapper/*.mapper
+#  type-aliases-package: com.shaojie.spring.cloud.alibaba.nacos.user.model
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"

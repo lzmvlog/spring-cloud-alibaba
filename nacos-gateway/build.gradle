@@ -8,7 +8,7 @@ dependencies {
     implementation 'javax.servlet:javax.servlet-api:4.0.1'
 }
 
-jar{
+jar {
     baseName 'nacos-gateway'
     manifest {
         attributes 'Main-Class': "com.shaojie.spring.cloud.alibaba.nacos.gateway.NacosGatewayApplication"
