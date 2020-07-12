@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
  * @Date 2019/11/8
  */
 @RestController
-public class NacosConsumerConsumer {
+public class NacosConsumerController {
 
     @Autowired
     private LoadBalancerClient loadBalancerClient;

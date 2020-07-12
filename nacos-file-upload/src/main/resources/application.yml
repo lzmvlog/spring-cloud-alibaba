@@ -1,3 +1,26 @@
-server:
-  port: 8084
-
+#server:
+#  port: 8084
+#
+#spring:
+#  application:
+#    name: nacos-file-upload
+#  cloud:
+#    nacos:
+#      discovery:
+#        # enabled: true
+#        server-addr: 120.78.189.213:8848/
+#
+## 端口检查 健康检查
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#
+#qiniuyun:
+#  access:
+#    key: accesskey
+#  secret:
+#    key: secretkey
+#  bucket:
+#    name: my-vlog
