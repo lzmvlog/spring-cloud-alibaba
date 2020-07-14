@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shaojie.spring.cloud.alibaba.nacos.user.dao.UserMapper;
 import com.shaojie.spring.cloud.alibaba.nacos.user.model.User;
 import com.shaojie.spring.cloud.alibaba.nacos.user.model.vo.UserVo;
+import com.shaojie.spring.cloud.alibaba.nacos.user.service.UserService;
 import com.shaojie.spring.cloud.alibaba.nacos.user.util.enums.StatusEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     public UserMapper userMapper;
@@ -27,6 +28,7 @@ public class UserServiceImpl {
      *
      * @param userVo 用户信息
      */
+    @Override
     public void saveUser(UserVo userVo) {
         userMapper.insert(new User().setId(IdUtil.fastSimpleUUID())
                 .setUserName(userVo.getUserName())
@@ -43,6 +45,7 @@ public class UserServiceImpl {
      * @param userVo user 视图 信息
      * @return
      */
+    @Override
     public IPage<User> listUsers(Page<User> page, UserVo userVo) {
         return userMapper.selectPage(page, Wrappers.query(new User()
                 .setId(userVo.getId())

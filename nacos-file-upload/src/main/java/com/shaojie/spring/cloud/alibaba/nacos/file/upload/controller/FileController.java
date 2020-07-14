@@ -30,27 +30,4 @@ public class FileController {
         return new Response(HttpStatus.HTTP_OK, qiUpLoad.upLoadFile(multipartFile));
     }
 
-    /**
-     * 文件上传
-     *
-     * @param multipartFile
-     * @return
-     */
-    @GetMapping("uploadFile/{file}")
-    public Response upLoadFile(@PathVariable(value = "file") MultipartFile multipartFile) {
-        qiUpLoad.upLoadFile(multipartFile);
-        return null;
-    }
-
-    /**
-     * 文件上传
-     *
-     * @return
-     */
-    @GetMapping("hello")
-    public Response hello() {
-//        qiUpLoad.upLoadFile(multipartFile);
-        return new Response(HttpStatus.HTTP_OK, "成功");
-    }
-
 }

@@ -76,8 +76,8 @@ public class QiUpload implements AbstractUpload {
                 //解析上传成功的结果
                 DefaultPutRet defaultPutRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
                 log.info("上传文件名：{} - 上传的");
-                System.out.println(defaultPutRet.key);
-                System.out.println(defaultPutRet.hash);
+                log.info(defaultPutRet.key);
+                log.info(defaultPutRet.hash);
             } catch (QiniuException ex) {
                 log.error("qiniuyun - 上传出错 - {}", ex);
                 throw new RuntimeException("qiniuyun - 上传出错");

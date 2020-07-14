@@ -4,6 +4,12 @@
 #spring:
 #  application:
 #    name: nacos-file-upload
+#  datasource:
+#    url: jdbc:mysql://127.0.0.1:3306/nacos-user?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+#    username: root
+#    password: Root5683@
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 #  cloud:
 #    nacos:
 #      discovery:
