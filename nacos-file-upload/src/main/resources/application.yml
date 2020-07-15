@@ -30,3 +30,4 @@
 #    key: secretkey
 #  bucket:
 #    name: my-vlog
+#  domainName: http://qiniuyun.lzmvlog.top/

@@ -34,8 +34,9 @@ testCompileOnly 'org.projectlombok:lombok:1.18.12'
 ```
 
 #### 模块说明
-1. `nacos-gateway` 网关
-2. `nacos-user` 用户信息管理
+1. `nacos-gateway` 网关服务
+2. `nacos-user` 用户服务
+3. `nacos-file-upload` 文件服务
 
 #### 使用说明
 
@@ -55,6 +56,23 @@ testCompileOnly 'org.projectlombok:lombok:1.18.12'
 3. 访问
 
     访问时通过`nacos-gateway` + 服务名称进行访问相应的服务接口
+    
+    以文件上传接口为例：
+        `http://127.0.0.1:9000/nacos-file-upload/file/upload`
+        
+4.  配置七牛云文件上传
+    ```yaml
+     qiniuyun:
+       access:
+         key: accesskey
+       secret:
+         key: secretkey
+       bucket:
+         name: my-vlog
+       domainName: http://qiniuyun.lzmvlog.top/
+    ```
+   七牛云上传不需要配置域名，但是在下载时需要配置一个 `cdn` 域名 ，以 `qiniuyun.lzmvlog.top` 为例，我需要解析当前的这个域名的 `CNAME` 解析到七牛云的域名管理的 `CNAME` 上才可以使用
+
 
 #### 参与贡献
 1. ShaoJie

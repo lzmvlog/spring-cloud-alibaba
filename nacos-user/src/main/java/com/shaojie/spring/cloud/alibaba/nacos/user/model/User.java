@@ -29,7 +29,7 @@ public class User {
     /**
      * 用户名
      */
-    @TableField("userName")
+    @TableField("user_name")
     private String userName;
 
     /**
