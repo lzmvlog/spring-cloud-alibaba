@@ -1,6 +1,8 @@
 package com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload;
 
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.model.Resource;
+import com.shaojie.spring.cloud.alibaba.nacos.file.upload.service.ResourceService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -10,22 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public abstract class AbstractUpload {
 
-//    /**
-//     * 上传文件
-//     *
-//     * @param files 文件字节
-//     * @return
-//     */
-//    String upLoadFile(byte[] files);
-
-
-//    /**
-//     * 上传文件
-//     *
-//     * @param stream 文件流
-//     * @return
-//     */
-//    String upLoadFile(ByteArrayInputStream stream);
+    @Autowired
+    private ResourceService resourceService;
 
     /**
      * 上传文件
@@ -33,7 +21,7 @@ public abstract class AbstractUpload {
      * @param multipartFile 文件流
      * @return
      */
-    public abstract String upLoadFile(MultipartFile multipartFile);
+    public abstract Object upLoadFile(MultipartFile multipartFile);
 
     /**
      * 下载文件
@@ -41,6 +29,8 @@ public abstract class AbstractUpload {
      * @param fileName 文件名称
      * @return url 返回文件下载路径
      */
-    public abstract Resource download(String fileName);
+    public Resource download(String fileName){
+        return  resourceService.getResource(fileName);
+    }
 
 }

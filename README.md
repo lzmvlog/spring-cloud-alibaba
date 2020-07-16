@@ -71,11 +71,37 @@ testCompileOnly 'org.projectlombok:lombok:1.18.12'
          name: my-vlog
        domainName: http://qiniuyun.lzmvlog.top/
     ```
-   七牛云上传不需要配置域名，但是在下载时需要配置一个 `cdn` 域名 ，以 `qiniuyun.lzmvlog.top` 为例，我需要解析当前的这个域名的 `CNAME` 解析到七牛云的域名管理的 `CNAME` 上才可以使用
-
+    七牛云上传不需要配置域名，但是在下载时需要配置一个 `cdn` 域名 ，以 `qiniuyun.lzmvlog.top` 为例，我需要解析当前的这个域名的 `CNAME` 解析到七牛云的域名管理的 `CNAME` 上才可以使用
+5. 配置OSS文件上传
+    ```yaml
+    oss:
+      access:
+        key: accesskey
+        secret:
+          key: secretkey
+        bucket:
+          name: nacos-resoure
+        endpoint: url
+        domainName: domainName
+    ```
+   阿里云OSS 上传，上传的地址和访问的地址不同，由于初始化的Bucket是私有文件库，所以在访问时应该可能需要认真，但是我们还是尽可能的满足所有的请求方式，如果觉得没有必要，可以直接设置当前的Bucket为公有文件库
+6. 配置文件服务器 MINLO
+     ```yaml
+    minio:
+      access:
+        key: accesskey
+      secret:
+        key: secretkey
+      bucket:
+        name: my-vlog
+      endpoint: url
+    ```
+    
+    搭建参考MINIO文档：http://docs.minio.org.cn/docs/
 
 #### 参与贡献
 1. ShaoJie
+2. chenghao
 
 
 #### 联系开发

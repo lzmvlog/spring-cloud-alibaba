@@ -23,6 +23,19 @@
 #      exposure:
 #        include: "*"
 #
+## 阿里云 oss
+#oss:
+#  access:
+#    key: accesskey
+#    secret:
+#      key: secretkey
+#    bucket:
+#      name: nacos-resoure
+#    endpoint: url
+#    domainName: domainName
+
+#
+## 七牛云
 #qiniuyun:
 #  access:
 #    key: accesskey
@@ -31,3 +44,13 @@
 #  bucket:
 #    name: my-vlog
 #  domainName: http://qiniuyun.lzmvlog.top/
+#
+## MINIO 文件服务器 参考地址：http://docs.minio.org.cn/docs/
+#minio:
+#  access:
+#    key: accesskey
+#  secret:
+#    key: secretkey
+#  bucket:
+#    name: my-vlog
+#  endpoint: url
