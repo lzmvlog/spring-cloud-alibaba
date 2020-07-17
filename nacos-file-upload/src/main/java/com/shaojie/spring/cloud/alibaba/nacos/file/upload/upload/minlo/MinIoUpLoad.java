@@ -4,7 +4,7 @@ import cn.hutool.core.util.IdUtil;
 import cn.hutool.core.util.StrUtil;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.model.vo.ResourceVo;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.service.ResourceService;
-import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.AbstractUpload;
+import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.UploadResource;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.util.Utils;
 import io.minio.MinioClient;
 import io.minio.PutObjectOptions;
@@ -25,7 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Service
 @Slf4j
-public class MinIoUpLoad extends AbstractUpload {
+public class MinIoUpLoad implements UploadResource {
 
     /**
      * URL
@@ -63,7 +63,6 @@ public class MinIoUpLoad extends AbstractUpload {
      */
     @SneakyThrows
     @SuppressWarnings("all")
-    @Override
     public String upLoadFile(MultipartFile multipartFile) {
         // 判断传入参数是否是空文件
         if (multipartFile.isEmpty() || multipartFile.getSize() <= 0) {
@@ -84,14 +83,15 @@ public class MinIoUpLoad extends AbstractUpload {
                 client.makeBucket(bucket);
                 log.info("已创建不存在的存储桶：{}", bucket);
             }
+            String suffix = Utils.getSuffix(multipartFile.getOriginalFilename());
             // 解决可能会出现相同新文件名，重新定义文件名 + 文件后缀
-            String newFileName = String.format("%s.%s", IdUtil.fastSimpleUUID(), Utils.getSuffix(multipartFile.getOriginalFilename()));
+            String newFileName = String.format("%s.%s", IdUtil.fastSimpleUUID(), suffix);
             url = String.format("%s%s/%s", endpoint, bucket, newFileName);
 
             // 上传文件
             client.putObject(bucket, newFileName, multipartFile.getInputStream(), new PutObjectOptions(multipartFile.getSize(), -1));
             // 保存文件
-            resourceService.save(new ResourceVo().setUrl(url).setFileName(multipartFile.getOriginalFilename()));
+            resourceService.save(new ResourceVo().setUrl(url).setFileName(multipartFile.getOriginalFilename()).setType(suffix));
             return url;
         } catch (InvalidEndpointException e) {
             log.error("无效端点异常：{0}", e);
@@ -101,5 +101,4 @@ public class MinIoUpLoad extends AbstractUpload {
         return "upLoad file error";
 
     }
-
 }

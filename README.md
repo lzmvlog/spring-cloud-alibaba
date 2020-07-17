@@ -98,6 +98,14 @@ testCompileOnly 'org.projectlombok:lombok:1.18.12'
     ```
     
     搭建参考MINIO文档：http://docs.minio.org.cn/docs/
+    
+7. 动态扩展上传的地址，只需要配置上传的方式，支持的方式：
+   ```
+   1、qiniuyun 
+   2、oss 
+   3、minio
+   例：methodName: qiniuyun
+   ```
 
 #### 参与贡献
 1. ShaoJie

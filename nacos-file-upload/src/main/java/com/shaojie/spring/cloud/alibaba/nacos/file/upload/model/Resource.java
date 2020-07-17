@@ -45,6 +45,6 @@ public class Resource {
      */
     @TableField("create_time")
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-    private Date createime;
+    private Date createTime;
 
 }

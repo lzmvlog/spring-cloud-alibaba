@@ -54,3 +54,5 @@
 #  bucket:
 #    name: my-vlog
 #  endpoint: url
+# 配置上传方式 1、qiniuyun 2、oss 3、minio
+#methodName: qiniuyun

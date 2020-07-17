@@ -7,7 +7,7 @@ import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.PutObjectRequest;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.model.vo.ResourceVo;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.service.ResourceService;
-import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.AbstractUpload;
+import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.UploadResource;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.util.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ import java.io.IOException;
  */
 @Service
 @Slf4j
-public class OSSUpload extends AbstractUpload {
+public class OSSUpload implements UploadResource {
 
     @Value("${oss.access.key}")
     private String accessKey;
@@ -57,14 +57,15 @@ public class OSSUpload extends AbstractUpload {
         String resourceId = IdUtil.fastSimpleUUID();
         String url = null;
         try {
-            String file = String.format("%s/%s.%s", DateUtil.today(), resourceId, Utils.getSuffix(multipartFile.getOriginalFilename()));
+            String suffix = Utils.getSuffix(multipartFile.getOriginalFilename());
+            String file = String.format("%s/%s.%s", DateUtil.today(), resourceId, suffix);
             PutObjectRequest putObjectRequest = new PutObjectRequest(bucket, file, new ByteArrayInputStream(multipartFile.getBytes()));
             // 上传字符串。
             ossClient.putObject(putObjectRequest);
             // 保存文件
             url = String.format("%s/%s", domainName, file);
 
-            resourceService.save(new ResourceVo().setUrl(url).setFileName(multipartFile.getOriginalFilename()));
+            resourceService.save(new ResourceVo().setUrl(url).setFileName(multipartFile.getOriginalFilename()).setType(suffix));
             // 关闭OSSClient。
             ossClient.shutdown();
         } catch (IOException e) {

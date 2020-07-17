@@ -33,7 +33,7 @@ public class ResourceServiceImpl implements ResourceService {
         resourceDao.insert(new Resource().setId(IdUtil.fastSimpleUUID())
                 .setFileName(resourceVo.getFileName())
                 .setUrl(resourceVo.getUrl())
-                .setCreateime(DateUtil.date()));
+                .setCreateTime(DateUtil.date()));
     }
 
     /**

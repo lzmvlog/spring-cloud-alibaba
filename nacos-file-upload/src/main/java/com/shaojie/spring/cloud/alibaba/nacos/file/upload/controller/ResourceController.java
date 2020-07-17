@@ -5,11 +5,10 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.model.Resource;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.model.vo.ResourceVo;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.service.ResourceService;
-import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.AbstractUpload;
+import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.ObjectUpload;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.util.PageUtil;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.util.Response;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,9 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("resource")
 public class ResourceController {
 
-    @Qualifier("minIoUpLoad")
     @Autowired
-    private AbstractUpload abstractUpload;
+    private ObjectUpload abstractUpload;
 
     @Autowired
     private ResourceService resourceService;

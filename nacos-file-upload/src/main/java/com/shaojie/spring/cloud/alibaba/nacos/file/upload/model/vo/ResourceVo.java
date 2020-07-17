@@ -43,6 +43,6 @@ public class ResourceVo {
      * 文件 id
      */
     @TableField("create_time")
-    private Date createime;
+    private Date createTime;
 
 }

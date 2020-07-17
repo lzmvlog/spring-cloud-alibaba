@@ -44,4 +44,11 @@ public class Response<T> {
         this.code = code;
         this.message = message;
     }
+
+    /**
+     * @param code 响应码
+     */
+    public Response(Integer code) {
+        this.code = code;
+    }
 }

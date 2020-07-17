@@ -11,7 +11,8 @@ import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.model.vo.ResourceVo;
 import com.shaojie.spring.cloud.alibaba.nacos.file.upload.service.ResourceService;
-import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.AbstractUpload;
+import com.shaojie.spring.cloud.alibaba.nacos.file.upload.upload.UploadResource;
+import com.shaojie.spring.cloud.alibaba.nacos.file.upload.util.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -24,11 +25,11 @@ import java.io.IOException;
 /**
  * @author ShaoJie
  * @Date 2020年07月12 20:38
- * @Description:
+ * @Description: 七牛云文件上传
  */
 @Service
 @Slf4j
-public class QiUpload extends AbstractUpload {
+public class QiUpload implements UploadResource {
 
     @Value("${qiniuyun.access.key}")
     private String accessKey;
@@ -75,9 +76,10 @@ public class QiUpload extends AbstractUpload {
                 //解析上传成功的结果
                 DefaultPutRet defaultPutRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
                 log.info("上传文件名 {} - 上传的hash {}", defaultPutRet.key, defaultPutRet.hash);
+                String suffix = Utils.getSuffix(multipartFile.getOriginalFilename());
                 // 保存文件
                 url = String.format("%s/%s", domainName, defaultPutRet.key);
-                resourceService.save(new ResourceVo().setUrl(url).setFileName(multipartFile.getOriginalFilename()));
+                resourceService.save(new ResourceVo().setUrl(url).setFileName(multipartFile.getOriginalFilename()).setType(suffix));
             } catch (QiniuException ex) {
                 log.error("qiniuyun - 上传出错 - {}", ex);
                 throw new RuntimeException("上传出错");
