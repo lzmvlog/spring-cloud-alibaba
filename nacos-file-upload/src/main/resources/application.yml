@@ -1,58 +1,57 @@
-#server:
-#  port: 8084
-#
-#spring:
-#  application:
-#    name: nacos-file-upload
-#  datasource:
-#    url: jdbc:mysql://127.0.0.1:3306/nacos-user?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
-#    username: root
-#    password: Root5683@
-#    type: com.alibaba.druid.pool.DruidDataSource
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#  cloud:
-#    nacos:
-#      discovery:
-#        # enabled: true
-#        server-addr: 120.78.189.213:8848/
-#
-## 端口检查 健康检查
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: "*"
-#
-## 阿里云 oss
-#oss:
-#  access:
-#    key: accesskey
-#    secret:
-#      key: secretkey
-#    bucket:
-#      name: nacos-resoure
-#    endpoint: url
-#    domainName: domainName
+server:
+  port: 8084
 
-#
-## 七牛云
-#qiniuyun:
-#  access:
-#    key: accesskey
-#  secret:
-#    key: secretkey
-#  bucket:
-#    name: my-vlog
-#  domainName: http://qiniuyun.lzmvlog.top/
-#
-## MINIO 文件服务器 参考地址：http://docs.minio.org.cn/docs/
-#minio:
-#  access:
-#    key: accesskey
-#  secret:
-#    key: secretkey
-#  bucket:
-#    name: my-vlog
-#  endpoint: url
+spring:
+  application:
+    name: nacos-file-upload
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/nacos-user?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=GMT%2B8
+    username: root
+    password: Root5683@
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        # enabled: true
+        server-addr: 120.78.189.213:8848/
+
+# 端口检查 健康检查
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# 阿里云 oss
+oss:
+  access:
+    key: accesskey
+  secret:
+      key: secretkey
+  bucket:
+      name: nacos-resoure
+  endpoint: url
+  domainName: domainName
+
+# 七牛云
+qiniuyun:
+  access:
+    key: accesskey
+  secret:
+    key: secretkey
+  bucket:
+    name: my-vlog
+  domainName: http://qiniuyun.lzmvlog.top/
+
+# MINIO 文件服务器 参考地址：http://docs.minio.org.cn/docs/
+minio:
+  access:
+    key: accesskey
+  secret:
+    key: secretkey
+  bucket:
+    name: my-vlog
+  endpoint: url
 # 配置上传方式 1、qiniuyun 2、oss 3、minio
-#methodName: qiniuyun
+methodName: qiniuyun

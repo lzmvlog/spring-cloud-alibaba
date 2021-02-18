@@ -42,7 +42,7 @@ public class ResourceController {
     }
 
     /**
-     * 文件上传
+     * 文件下载
      *
      * @param fileName 文件名称
      * @return

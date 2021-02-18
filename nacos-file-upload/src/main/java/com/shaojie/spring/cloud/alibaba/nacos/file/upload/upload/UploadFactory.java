@@ -12,6 +12,8 @@ import javax.validation.constraints.NotNull;
  * @author ShaoJie
  * @Date 2020年07月17 09:50
  * @Description: 上传工厂
+ * <p>
+ * 用于配置默认的文件上传服务
  */
 @Component
 public class UploadFactory {

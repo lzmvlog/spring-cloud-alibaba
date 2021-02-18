@@ -14,17 +14,8 @@ subprojects {
 
     repositories {
         mavenLocal()
-        maven {
-            url = uri('https://repo.spring.io/libs-milestone')
-        }
-
-        maven {
-            url = uri('http://maven.aliyun.com/nexus/content/groups/public')
-        }
-
-        maven {
-            url = uri('http://repo.maven.apache.org/maven2')
-        }
+        // 配置镜像仓库
+        maven { url 'https://maven.aliyun.com/repository/public/' }
         mavenCentral()
     }
 

@@ -23,7 +23,7 @@
 
 2. `gradle` 配置 `lombok` 和 `maven` 不同
 
-`gradle` 需要添加四个依赖 --> `gradle init` 时需要的依赖
+`gradle` 需要添加四个依赖 ==> `gradle init` 时需要的依赖
 
 正常构建时并不需要这么多的依赖
 ```
@@ -41,7 +41,9 @@ testCompileOnly 'org.projectlombok:lombok:1.18.12'
 #### 使用说明
 
 1.  首先先启动 `nacos-gateway` 
-    注意修改 `application.yml` 中的连接地址 `spring.cloud.nacos.discovery.server-addr='nacos的连接地址'`
+    注意在nacos中创建`nacos-gateway.yaml`配置文件
+    修改 `application.yml` 中的连接地址 `spring.cloud.nacos.discovery.server-addr='nacos的连接地址'`
+    另外数据库地址需要修改成你自己修改成当前的ip
 2.  新加的模块 需要在 `nacos-gateway` 网关中进行配置
     ```
     # 采用自定义路由 ID（有固定用法，不同的 id 有不同的功能，详见：https://cloud.spring.io/spring-cloud-gateway/2.0.x/single/spring-cloud-gateway.html#gateway-route-filters）
@@ -77,12 +79,12 @@ testCompileOnly 'org.projectlombok:lombok:1.18.12'
     oss:
       access:
         key: accesskey
-        secret:
-          key: secretkey
-        bucket:
-          name: nacos-resoure
-        endpoint: url
-        domainName: domainName
+      secret:
+        key: secretkey
+      bucket:
+        name: nacos-resoure
+      endpoint: url
+      domainName: domainName
     ```
    阿里云OSS 上传，上传的地址和访问的地址不同，由于初始化的Bucket是私有文件库，所以在访问时应该可能需要认真，但是我们还是尽可能的满足所有的请求方式，如果觉得没有必要，可以直接设置当前的Bucket为公有文件库
 6. 配置文件服务器 MINLO

@@ -47,4 +47,10 @@ public class Resource {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
+    /**
+     * 文件类型
+     */
+    @TableField("type")
+    private String type;
+
 }

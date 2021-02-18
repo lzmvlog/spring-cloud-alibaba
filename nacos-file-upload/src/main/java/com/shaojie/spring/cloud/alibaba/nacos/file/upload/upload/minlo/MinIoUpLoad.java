@@ -30,25 +30,25 @@ public class MinIoUpLoad implements UploadResource {
     /**
      * URL
      */
-    @Value("${minlo.endpoint}")
+    @Value("${minio.endpoint}")
     private String endpoint;
 
     /**
      * 账号标识
      */
-    @Value("${minlo.access.key}")
+    @Value("${minio.access.key}")
     private String accessKey;
 
     /**
      * 账号密码
      */
-    @Value("${minlo.secret.key}")
+    @Value("${minio.secret.key}")
     private String secretKey;
 
     /**
      * 存储桶名称
      */
-    @Value("${minlo.bucket.name}")
+    @Value("${minio.bucket.name}")
     private String bucket;
 
     @Autowired

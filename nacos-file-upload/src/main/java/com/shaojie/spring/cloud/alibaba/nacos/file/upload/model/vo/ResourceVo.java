@@ -45,4 +45,10 @@ public class ResourceVo {
     @TableField("create_time")
     private Date createTime;
 
+    /**
+     * 文件类型
+     */
+    @TableField("type")
+    private String type;
+
 }
